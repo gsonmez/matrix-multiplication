@@ -1,0 +1,68 @@
+public class Study1 {
+int[][] m1, m2, carpim,top;
+final int N=3;
+int sum = 0;
+//--------------------------------------------------------------------------------------------------
+public void ilklendir() {
+	m1 = new int[N][N];
+	m2 = new int[N][N];
+	
+	for(int i = 0;i<N;i++) 
+	
+		for(int j= 0 ; j<N;j++) {
+			m1[i][j] = (int) (Math.random()*50);
+	        m2[i][j] = (int) (Math.random()*50);}
+		}
+//--------------------------------------------------------------------------------------------------
+	public void göster(int [][] matris) {
+		
+		for(int k = 0;k<N;k++) {
+			System.out.printf("{" );
+	     for(int l = 0 ; l<N;l++) {    	 
+			 System.out.print( matris[k][l] +" " );	 
+	     }				
+	     System.out.printf("}");
+	     System.out.println();     
+}
+  }
+	//--------------------------------------------------------------------------------------------------
+    public int[][]  topla( int [][]m1, int[][] m2) {
+	  top = new int[N][N];
+	for(int k = 0;k<N;k++) {	
+     for(int l = 0 ; l<N;l++) {
+    	   top[k][l] = m1 [k][l] + m2[k][l]; 
+ }}		
+return top;
+}
+	//-------------------------------------------------------------------------------------------------- 1 1* 1 1 - 1 2 * 2 1 - 1 3 * 3 1 
+public int[][] carp(int[][] m1,int [][]m2){
+	top = new int[N][N];
+	
+	for(int k = 0;k<N;k++) {	
+	     for(int l = 0 ; l<N;l++) {
+	    	for(int i = 0;i< N ; i++) {
+	    		sum = sum + m1 [k][i] * m2[i][l];   		
+	    	}
+	    	top[k][l]= sum  ;
+   		    sum= 0;
+	    	}    
+	}
+	return top;
+}
+
+	public static void main(String[] args) {
+	
+    Study1 x = new Study1();
+     x.ilklendir();
+	 System.out.println( "1. matris" );
+     x.göster(x.m1);
+	 System.out.println( "2. matris" );
+     x.göster(x.m2);
+     x.topla(x.m1, x.m2);
+	 System.out.println( "Matris toplamları" );
+     x.göster(x.topla(x.m1, x.m2));
+	 System.out.println( "Matris çarpımı" );
+     x.göster(x.carp(x.m1, x.m2));
+	}
+
+}
